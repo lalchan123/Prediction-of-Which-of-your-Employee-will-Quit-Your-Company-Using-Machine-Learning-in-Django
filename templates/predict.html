@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction System</title>
+    <style>
+        body {
+            background-image: url("{% static 'p1.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .main{
+            position: fixed;
+            top: 30px;
+            bottom: 20px;
+            left: 410px;
+            width: 550px;
+            background-color:#ffffff;
+            border-radius: 10px;
+            align-items: center;
+            padding: 5%;
+        }
+        h1{
+            color: #0086b3;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        input[type=submit]{
+            background-color: #a10b18;
+            border: 2px;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5%;
+            font-weight: bold;
+        }
+        a{
+            background-color: #a10b18;
+            border: 2px;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5%;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div align="center" class="main">
+        <h1>Please enter the following informations:</h1>
+        <form action="{% url 'result' %}" method="POST"> 
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td align="right">number_project: </td>
+                    <td align="left"><input type="text" name="n1" required></td>
+                </tr>
+                <tr>
+                    <td align="right">average_montly_hours: </td>
+                    <td align="left"><input type="text" name="n2" required></td>
+                </tr>
+                <tr>
+                    <td align="right">time_spend_company: </td>
+                    <td align="left"><input type="text" name="n3" required></td>
+                </tr>
+                <tr>
+                    <td align="right">Work_accident: </td>
+                    <td align="left"><input type="text" name="n4" required></td>
+                </tr>
+                <tr>
+                    <td align="right">promotion_last_5years: </td>
+                    <td align="left"><input type="text" name="n5" required></td>
+                </tr>
+                <tr>
+                    <td align="right">department: </td>
+                    <td align="left"><input type="text" name="n6" required></td>
+                </tr>
+                <tr>
+                    <td align="right">salary: </td>
+                    <td align="left"><input type="text" name="n7" required></td>
+                </tr>
+                <tr>
+                    <td align="right">satisfaction_level: </td>
+                    <td align="left"><input type="text" name="n8" required></td>
+                </tr>
+                <tr>
+                    <td align="right">last_evaluation: </td>
+                    <td align="left"><input type="text" name="n9" required></td>
+                </tr>
+                
+            </table>
+            <div class="row">
+                <a href="{% url 'home' %}">Home</a> 
+                <input type="submit" value="PREDICT">
+                <a href="{% url 'recordData' %}">Show Data</a> 
+            </div>
+        </form>
+        <br>
+         Result: {{result}} 
+        
+    </div>
+</body>
+
+</html>
